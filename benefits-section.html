@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benefits Section</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+            },
+            secondary: {
+              200: '#fed7aa',
+              300: '#fdba74',
+              400: '#fb923c',
+              500: '#f97316',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    #services {
+      margin: 0;
+      padding: 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 50vw);
+      grid-template-rows: repeat(2, 825px);
+      gap: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .grid-block {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .grid-block img {
+      width: 100%;
+      height: 140%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .image-block {
+      overflow: hidden;
+    }
+
+    .text-block {
+      background: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem;
+    }
+
+    .text-block h3 {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+    }
+
+    .text-block .highlight {
+      color: #14b8a6;
+    }
+
+    .text-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .text-block li {
+      margin-bottom: 2rem;
+      padding-left: 3rem;
+      position: relative;
+    }
+
+    .text-block .number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #14b8a6;
+      font-size: 1.5rem;
+    }
+
+    .text-block li strong {
+      display: block;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-block li p {
+      font-size: 0.9rem;
+      color: #999;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+<section id="services">
+    <!-- 2x2 Grid Layout - Full Width -->
+    <div class="benefits-grid">
+
+      <!-- Top Left - IMAGE -->
+      <div class="grid-block image-block">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80" alt="Professional pool service" class="parallax-image">
+      </div>
+
+      <!-- Top Right - TEXT -->
+      <div class="grid-block text-block">
+        <h3>Experience<br>the <span class="highlight">A+ Pool</span><br>Advantage</h3>
+        <ul>
+          <li>
+            <span class="number">1</span>
+            <strong>Over 1000 Premium Products</strong>
+            <p>Save your weekends and enjoy more time with family while we handle all the maintenance.</p>
+          </li>
+          <li>
+            <span class="number">2</span>
+            <strong>Trusted in 40 Countries</strong>
+            <p>Professionally balanced chemistry means crystal clear water every time.</p>
+          </li>
+          <li>
+            <span class="number">3</span>
+            <strong>8 Regional Warehouses</strong>
+            <p>Protect your investment with expert care and maintenance.</p>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom Left - TEXT -->
+      <div class="grid-block text-block">
+        <h3>Why Choose<br><span class="highlight">A+ Pool Service?</span></h3>
+        <p style="color: #999; line-height: 1.8; font-size: 0.95rem;">
+          We are detail and innovation-driven together to redefine excellence in pool maintenance. Our commitment to perfection means you receive nothing less than exceptional service every time.
+        </p>
+        <p style="color: #999; line-height: 1.8; font-size: 0.95rem; margin-top: 1.5rem;">
+          Our mission is to elevate the standard of pool care while delivering outstanding results that go far beyond industry standards. From chemistry to equipment, we ensure every detail shines.
+        </p>
+      </div>
+
+      <!-- Bottom Right - IMAGE -->
+      <div class="grid-block image-block">
+        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80" alt="Crystal clear pool water" class="parallax-image">
+      </div>
+
+    </div>
+</section>
+
+<script>
+  // Parallax scroll effect with depth
+  function parallaxScroll() {
+    const images = document.querySelectorAll('.parallax-image');
+    const grid = document.querySelector('.benefits-grid');
+
+    if (!grid) return;
+
+    const gridRect = grid.getBoundingClientRect();
+    const gridTop = gridRect.top;
+    const windowHeight = window.innerHeight;
+
+    // Calculate scroll progress relative to grid visibility
+    const scrollProgress = (windowHeight - gridTop) / (windowHeight + gridRect.height);
+
+    images.forEach(img => {
+      // More visible parallax: move at 0.3x speed (70% slower than normal scroll)
+      const parallaxSpeed = 0.3;
+      const moveAmount = scrollProgress * 200 * (1 - parallaxSpeed);
+
+      // Apply noticeable transform - move DOWN to cover more on scroll
+      // Start at negative position to avoid white space at top
+      img.style.transform = `translateY(${moveAmount - 100}px)`;
+    });
+  }
+
+  // Throttle scroll events for performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        parallaxScroll();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // Initial call
+  parallaxScroll();
+</script>
+
+</body>
+</html>
