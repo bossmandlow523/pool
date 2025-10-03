@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 
@@ -13,41 +13,56 @@ const Hero = () => {
 
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden">
-      <motion.div style={{ y }} className="absolute inset-0 w-full h-full">
-      {/* Split Layout */}
-      <div className="flex flex-col lg:flex-row w-full h-full">
-        {/* Right Side - Image */}
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.8 }}
-          className="w-full lg:w-[50vw] relative min-h-[400px] lg:min-h-0 order-2 lg:order-1"
-        >
-          <div className="absolute inset-0">
-            <img
-              src="/hero-pool.png"
-              alt="Stunning crystal-clear pool with palm trees and modern outdoor living space"
-              className="w-full h-full object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent"></div>
-          </div>
+      {/* Mobile: Image background with overlay */}
+      <div className="lg:hidden absolute inset-0">
+        <img
+          src="/hero-pool.png"
+          alt="Stunning crystal-clear pool with palm trees and modern outdoor living space"
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-primary-900/60"></div>
+      </div>
 
-          {/* Floating badge */}
+      {/* Desktop: Parallax wrapper */}
+      <motion.div style={{ y }} className="hidden lg:block absolute inset-0 w-full h-full">
+        <div className="flex flex-row w-full h-full">
+          {/* Image - Desktop only */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={inView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ delay: 1, duration: 0.5 }}
-            className="absolute bottom-8 left-8 bg-white rounded-lg shadow-2xl p-4 animate-float"
+            initial={{ opacity: 0, x: -50 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="w-[50vw] relative"
           >
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary-600">10+</div>
-              <div className="text-sm text-gray-600">Years of Service</div>
+            <div className="absolute inset-0">
+              <img
+                src="/hero-pool.png"
+                alt="Stunning crystal-clear pool with palm trees and modern outdoor living space"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent"></div>
             </div>
-          </motion.div>
-        </motion.div>
 
-        {/* Left Side - Text Content */}
-        <div className="w-full lg:w-[50vw] bg-primary-500 flex items-center justify-center px-6 py-20 lg:py-0 order-1 lg:order-2">
+            {/* Floating badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="absolute bottom-8 left-8 bg-white rounded-lg shadow-2xl p-4 animate-float"
+            >
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600">10+</div>
+                <div className="text-sm text-gray-600">Years of Service</div>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Teal content - Desktop only */}
+          <div className="w-[50vw] bg-primary-500"></div>
+        </div>
+      </motion.div>
+
+      {/* Text Content - Works for both mobile and desktop */}
+      <div className="relative w-full lg:w-[50vw] lg:ml-[50vw] bg-transparent lg:bg-primary-500 flex items-center justify-center px-6 py-20 min-h-screen lg:py-0">
           <motion.div
             ref={ref}
             initial={{ opacity: 0, x: 50 }}
@@ -95,10 +110,7 @@ const Hero = () => {
               </a>
             </motion.div>
           </motion.div>
-        </div>
       </div>
-      </motion.div>
-
     </section>
   )
 }

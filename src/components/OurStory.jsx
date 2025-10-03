@@ -9,7 +9,7 @@ const OurStory = () => {
   })
 
   return (
-    <section id="about" className="section-padding bg-primary-500 text-white relative overflow-hidden">
+    <section id="about" className="py-16 md:py-20 bg-primary-500/90 text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 right-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -17,7 +17,7 @@ const OurStory = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left - Image */}
           <motion.div
             ref={ref}
@@ -27,14 +27,11 @@ const OurStory = () => {
             className="relative"
           >
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-primary-600">
-              <div className="w-full h-full flex items-center justify-center text-white/30 p-8">
-                <div className="text-center space-y-4">
-                  <svg className="w-24 h-24 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                  </svg>
-                  <p className="font-medium">Photo: Kim and Drew with happy customer beside sparkling pool</p>
-                </div>
-              </div>
+              <img
+                src="/Generated Image October 01, 2025 - 3_27PM.png"
+                alt="Kim and Drew with happy customer beside sparkling pool"
+                className="w-full h-full object-cover"
+              />
             </div>
 
             {/* Decorative badge */}
@@ -61,42 +58,39 @@ const OurStory = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-3xl sm:text-4xl font-bold mb-4"
             >
-              Our Story
+              Our <span className="bg-gradient-to-r from-secondary-400 via-secondary-300 to-secondary-500 bg-clip-text text-transparent font-black">Story</span>
             </motion.h2>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="space-y-6 text-lg text-white/90 leading-relaxed"
+              className="space-y-4 text-base text-white/90 leading-relaxed"
             >
               <p>
-                We have been in business for about 10 years now. We are a small family owned business with myself and my nephew. We work very hard to make all of our customers happy with our service.
+                For over 10 years, we've been proud to serve our community as a family-owned pool service. As a small team—just myself and my nephew—we're personally invested in every pool we maintain and every customer we serve.
               </p>
               <p>
-                We strive in quality work—we do not cut corners and as I call it "dump and dash" like other companies do. We provide a full cleaning and chemical service weekly at guaranteed quality and at fair prices.
+                Quality is at the heart of everything we do. Unlike the "dump and dash" approach of larger companies, we provide comprehensive weekly cleaning and chemical services with meticulous attention to detail. Our commitment to excellence comes at fair, honest prices.
               </p>
               <p>
-                We service from South Venice to Lakewood Ranch. I am licensed and insured. Please feel free to call, text, or email with any questions or if you would like a free estimate.
+                We proudly service the entire area from South Venice to Lakewood Ranch. As a licensed and insured business, you can trust us with complete confidence. Whether you have questions or would like a free estimate, we're just a call, text, or email away.
               </p>
-              <p className="text-xl font-semibold text-white">
-                We would love to be your new reliable pool service. You all stay safe and take care.
+              <p className="text-base font-semibold text-white">
+                We'd be honored to become your trusted pool service partner. Let us show you what reliable, quality service looks like.
               </p>
-              <p className="text-2xl font-bold">- Kim and Drew</p>
+              <p className="text-lg font-bold">- Kim and Drew</p>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-6"
             >
-              <a href="#contact" className="btn-primary bg-secondary-400 hover:bg-secondary-500">
-                Get Your Free Estimate
-              </a>
-              <a href="tel:+19415550123" className="btn-secondary border-white text-white hover:bg-white/10">
+              <a href="tel:+19415550123" className="btn-primary bg-secondary-400 hover:bg-secondary-500">
                 Call Us Today
               </a>
             </motion.div>

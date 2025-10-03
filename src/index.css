@@ -10,28 +10,39 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   body {
     @apply font-sans text-gray-900;
   }
+
+  /* Accessible focus styles */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    @apply outline-none ring-4 ring-primary-400 ring-offset-2;
+  }
+
+  /* Ensure text remains readable when selected */
+  ::selection {
+    @apply bg-primary-500 text-white;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply px-8 py-4 bg-secondary-400 text-white font-semibold rounded-lg hover:bg-secondary-500 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-secondary-400 text-white font-semibold rounded-lg hover:bg-secondary-500 focus:bg-secondary-500 focus:outline-none focus:ring-4 focus:ring-secondary-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
   }
 
   .btn-secondary {
-    @apply px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 border-2 border-primary-600;
+    @apply px-6 sm:px-8 py-3 sm:py-4 min-h-[48px] bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-50 focus:bg-gray-50 focus:outline-none focus:ring-4 focus:ring-primary-200 transition-all duration-300 border-2 border-primary-600;
   }
 
   .section-padding {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-12 sm:py-16 md:py-20 lg:py-28 xl:py-32;
   }
 
   .container-custom {
-    @apply max-w-7xl mx-auto px-6 md:px-8 lg:px-12;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12;
   }
 
   .text-gradient {

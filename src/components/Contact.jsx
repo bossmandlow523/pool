@@ -31,7 +31,7 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-br from-primary-500 to-primary-600 text-white relative overflow-hidden">
+    <section id="contact" className="section-padding bg-gradient-to-br from-primary-500/90 to-primary-600/90 text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
@@ -46,15 +46,28 @@ const Contact = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Ready to Love Your Pool Again?
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight tracking-tight">
+            Ready to{' '}
+            <span className="relative inline-block pr-4 pl-2">
+              <span className="bg-gradient-to-r from-secondary-300 via-secondary-200 to-secondary-400 bg-clip-text text-transparent italic">
+                Love{'\u00A0'}
+              </span>
+              <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none">
+                <path
+                  d="M0,7 Q50,2 100,7 T200,7"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  className="text-secondary-300/60"
+                />
+              </svg>
+            </span>
+            <br />
+            <span className="text-white/95 drop-shadow-lg">Your Pool Again?</span>
           </h2>
-          <p className="text-xl text-white/90 max-w-3xl mx-auto">
-            Don't let another weekend slip by in frustration. With our white-glove pool service, your water stays clear, your equipment lasts longer, and your family gets to enjoy the oasis you've always wanted.
-          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-8">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -75,7 +88,7 @@ const Contact = () => {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
                   placeholder="Your full name"
                 />
               </div>
@@ -91,7 +104,7 @@ const Contact = () => {
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
                   placeholder="(941) 555-0123"
                 />
               </div>
@@ -106,7 +119,7 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
                   placeholder="your@email.com"
                 />
               </div>
@@ -122,7 +135,7 @@ const Contact = () => {
                   required
                   value={formData.address}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
+                  className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
                   placeholder="123 Pool Lane, Sarasota, FL"
                 />
               </div>
@@ -160,20 +173,8 @@ const Contact = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-4"
           >
-            {/* Image */}
-            <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-primary-600">
-              <div className="w-full h-full flex items-center justify-center text-white/30 p-8">
-                <div className="text-center space-y-4">
-                  <svg className="w-24 h-24 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                  </svg>
-                  <p className="font-medium">Photo: Technician shaking hands with smiling homeowner beside sparkling pool</p>
-                </div>
-              </div>
-            </div>
-
             {/* Contact Cards */}
             <div className="space-y-4">
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">

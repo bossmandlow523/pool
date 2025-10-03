@@ -74,29 +74,25 @@ const ServiceShowcase = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <div>
-              <span className="text-gray-800">From</span>{' '}
+              <span className="text-gray-800 font-light">From</span>{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-gray-400 via-gray-500 to-gray-400 bg-clip-text text-transparent font-black">Cloudy</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-gray-400/80 via-gray-500/90 to-gray-400/80 blur-lg rounded-lg"></span>
               </span>{' '}
-              <span className="text-gray-800">to</span>{' '}
-              <span className="relative inline-block">
-                <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-teal-400 bg-clip-text text-transparent font-black">
-                  Crystal-Clear
-                </span>
-                <span className="absolute inset-x-0 bottom-2 h-5 bg-gradient-to-r from-cyan-300/70 via-blue-300/70 to-teal-300/70 -z-10 blur-sm"></span>
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-200/30 via-blue-200/30 to-teal-200/30 blur-2xl"></span>
+              <span className="text-gray-800 font-light">to</span>{' '}
+              <span className="bg-gradient-to-r from-primary-500 via-primary-400 to-teal-400 bg-clip-text text-transparent font-black">
+                Crystal-Clear
               </span>
             </div>
-            <div className="text-center">
+            <div className="text-center mt-2">
               <span className="font-black bg-gradient-to-r from-secondary-400 via-secondary-300 to-secondary-500 bg-clip-text text-transparent drop-shadow-sm">
                 Every Week
               </span>
             </div>
           </h2>
-          <p className="text-xl text-gray-900 font-semibold max-w-3xl mx-auto drop-shadow-lg">
+          <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto px-4">
             Whether your pool needs routine weekly care, storm clean-up, or total seasonal prep, we do it with precision. Our step-by-step care means clear, balanced, swim-ready water every visit.
           </p>
         </motion.div>
@@ -111,7 +107,9 @@ const ServiceShowcase = () => {
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
                 onClick={() => setActiveService(index)}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-700 ease-out will-change-transform ${
+                aria-pressed={activeService === index}
+                aria-label={`Select ${service.name}`}
+                className={`p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-700 ease-out will-change-transform min-h-[88px] ${
                   activeService === index
                     ? 'bg-primary-500 text-white shadow-2xl scale-105'
                     : 'bg-white hover:bg-gray-100'
@@ -213,15 +211,18 @@ const ServiceShowcase = () => {
             </AnimatePresence>
 
             {/* Floating indicator dots */}
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 bg-white px-4 py-2 rounded-full shadow-lg">
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1 bg-white px-3 py-2 rounded-full shadow-lg">
               {services.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setActiveService(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-500 ease-out will-change-transform ${
+                  aria-label={`View ${services[index].name}`}
+                  className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                >
+                  <span className={`block w-2 h-2 rounded-full transition-all duration-500 ease-out will-change-transform ${
                     activeService === index ? 'bg-primary-500 w-6' : 'bg-gray-300'
-                  }`}
-                />
+                  }`} />
+                </button>
               ))}
             </div>
           </motion.div>

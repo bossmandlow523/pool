@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(copy:*)",
-      "Read(//c/Users/nicks/OneDrive/Pictures/Screenshots/**)"
+      "Read(//c/Users/nicks/OneDrive/Pictures/Screenshots/**)",
+      "Bash(npx shadcn@latest add \"https://21st.dev/r/meschacirung/faqs-component\")",
+      "Bash(npm run dev:*)"
     ],
     "deny": [],
     "ask": []

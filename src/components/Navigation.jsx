@@ -22,21 +22,19 @@ const Navigation = () => {
   ]
 
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+    <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white/50 backdrop-blur-sm shadow-lg py-4' : 'bg-transparent py-6'
-      }`}
+        isScrolled || isMobileMenuOpen ? 'bg-white/50 backdrop-blur-md shadow-lg' : 'bg-white/95 lg:bg-transparent'
+      } py-4`}
     >
-      <div className="container-custom flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <a href="#top" className="flex items-center">
-          <img src="/logo.png" alt="A Plus Pools" className="h-14 w-14" />
+          <img src="/logo.png" alt="A Plus Pools" className="h-12 w-12" />
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8 absolute left-1/2 transform -translate-x-1/2">
+        <div className="hidden lg:flex items-center space-x-6">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -50,16 +48,17 @@ const Navigation = () => {
               {link.name}
             </a>
           ))}
-          <a href="#contact" className="relative font-semibold transition-all duration-300 group px-2">
-            <span className={`relative z-10 ${isScrolled ? 'text-gray-900' : 'text-white'} transition-colors`}>Get Free Quote</span>
-            <span className="absolute left-0 right-0 bottom-1 h-2.5 bg-secondary-400 opacity-50 transform -rotate-1 rounded-sm"></span>
+          <a href="#contact" className="px-6 py-2 rounded-lg font-semibold transition-all bg-secondary-400 text-white hover:bg-secondary-500">
+            Get Free Quote
           </a>
         </div>
 
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`lg:hidden p-2 ${isScrolled ? 'text-gray-900' : 'text-white'}`}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          className="lg:hidden p-2 text-gray-900"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             {isMobileMenuOpen ? (
@@ -78,27 +77,31 @@ const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t mt-4"
+            className="lg:hidden bg-white border-t"
           >
-            <div className="container-custom py-6 space-y-4">
+            <div className="px-4 py-4 space-y-1">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-gray-700 hover:text-primary-600 font-medium"
+                  className="block text-gray-700 hover:text-primary-600 font-medium py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
-              <a href="#contact" className="btn-primary block text-center">
+              <a
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block bg-primary-500 text-white text-center font-semibold py-3 px-4 rounded-lg hover:bg-primary-600 mt-2"
+              >
                 Get Free Quote
               </a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </nav>
   )
 }
 
