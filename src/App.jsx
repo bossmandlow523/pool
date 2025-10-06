@@ -11,7 +11,7 @@ import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="overflow-x-hidden">
+    <>
       <Navigation />
       <Hero />
       <div className="flex flex-col">
@@ -37,7 +37,7 @@ function App() {
           <Footer />
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

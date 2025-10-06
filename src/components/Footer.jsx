@@ -3,47 +3,54 @@ import React, { useEffect, useState, useRef } from 'react'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const [isVisible, setIsVisible] = useState(false)
-  const [scrollProgress, setScrollProgress] = useState(0)
+  const [revealProgress, setRevealProgress] = useState(0)
   const footerRef = useRef(null)
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false
+
+    const updateReveal = () => {
+      ticking = false
       if (!footerRef.current) return
 
-      const footerRect = footerRef.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
+      const footerEl = footerRef.current
+      const footerHeight = footerEl.offsetHeight
+      if (footerHeight === 0) return
 
-      // Calculate how much of the footer should be visible
-      // When footer top is at bottom of screen, start revealing it
-      const distanceFromBottom = windowHeight - footerRect.top
-      const footerHeight = footerRect.height
+      const footerOffset = footerEl.offsetTop
+      const viewportBottom = window.scrollY + window.innerHeight
+      const revealMargin = footerHeight * 0.35 + 48 // start revealing slightly early
+      const revealStart = footerOffset - revealMargin
+      const revealRange = footerHeight + revealMargin
+      const progress = Math.min(1, Math.max(0, (viewportBottom - revealStart) / revealRange))
 
-      // Calculate progress (0 when footer is below viewport, 1 when fully visible)
-      const progress = Math.max(0, Math.min(1, distanceFromBottom / footerHeight))
+      setRevealProgress(progress)
+      setIsVisible(progress > 0)
+    }
 
-      setScrollProgress(progress)
-
-      // Trigger visibility animations when footer starts to appear
-      if (progress > 0.2) {
-        setIsVisible(true)
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true
+        window.requestAnimationFrame(updateReveal)
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    handleScroll() // Initial call
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    window.addEventListener('resize', updateReveal)
+    updateReveal()
 
     return () => {
       window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', updateReveal)
     }
   }, [])
 
-  // Calculate transform based on scroll progress - parallax effect
-  const translateY = (1 - scrollProgress) * 40
+  const translateY = footerRef.current ? Math.max(0, (1 - revealProgress) * footerRef.current.offsetHeight) : 0
 
   return (
     <footer
       ref={footerRef}
-      className="relative bg-primary-600 text-white py-16 overflow-hidden transition-transform duration-100 ease-out"
+      className="relative bg-primary-600 text-white py-16 overflow-hidden transition-transform duration-500 ease-out"
       style={{
         transform: `translateY(${translateY}px)`
       }}
@@ -181,4 +188,3 @@ const Footer = () => {
 }
 
 export default Footer
-
