@@ -257,7 +257,18 @@ const Benefits = () => {
 
         {/* Top Right - TEXT */}
         <div className="grid-block text-block" style={{ justifyContent: 'flex-end', paddingBottom: '4rem' }}>
-          <h3 style={{ marginTop: '6rem', textAlign: 'center' }}><span style={{ background: 'linear-gradient(to right, #14b8a6, #0d9488)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: '900' }}>Experience</span> the <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '4.5rem', height: '4.5rem', background: 'linear-gradient(135deg, #14b8a6, #0d9488)', color: 'white', fontWeight: '900', fontSize: '2rem', transform: 'rotate(-6deg)', borderRadius: '0.75rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', margin: '0 0.75rem' }}>A+</span> Pool <span style={{ background: 'linear-gradient(to right, #ffa347, #ff8a1f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontWeight: '900' }}>Advantage</span></h3>
+          <div style={{ marginTop: '6rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
+            <div style={{ fontSize: '1.485rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+              The
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', position: 'relative' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                <span style={{ fontSize: '2.4rem', fontWeight: '600', background: 'linear-gradient(135deg, #06b6d4 0%, #14b8a6 25%, #10b981 50%, #14b8a6 75%, #0891b2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', letterSpacing: '0.02em', lineHeight: '1' }}>Rees's</span>
+                <span style={{ fontSize: '1.59rem', fontWeight: '700', background: 'linear-gradient(135deg, #06b6d4 0%, #14b8a6 25%, #10b981 50%, #14b8a6 75%, #0891b2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textTransform: 'uppercase', letterSpacing: '0.1em', paddingBottom: '0.25rem' }}>Pool Care</span>
+              </div>
+              <div style={{ fontSize: '1.155rem', fontWeight: '700', background: 'linear-gradient(to right, #ffa347, #ff8a1f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', letterSpacing: '0.2em', marginTop: '-0.25rem', fontStyle: 'italic' }}>Experience</div>
+            </div>
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: 'auto' }}>
             <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: '1.5rem', position: 'relative' }}>
               <svg style={{ position: 'absolute', top: '1.5rem', left: 0, width: '1.25rem', height: '1.25rem', color: '#14b8a6' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -288,7 +299,18 @@ const Benefits = () => {
 
         {/* Bottom Left - TEXT */}
         <div className="grid-block text-block" style={{ justifyContent: 'flex-end', paddingBottom: '4rem' }}>
-          <h3 style={{ overflow: 'visible', marginTop: '6rem' }}><span style={{ background: 'linear-gradient(to right, #14b8a6, #0d9488)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: '#14b8a6', fontWeight: '900' }}>Why Choose</span> <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '4.5rem', height: '4.5rem', background: 'linear-gradient(135deg, #14b8a6, #0d9488)', color: 'white', fontWeight: '900', fontSize: '2rem', transform: 'rotate(-6deg)', borderRadius: '0.75rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)', margin: '0 0.5rem 0 0.25rem' }}>A+</span> Pool <span style={{ background: 'linear-gradient(to right, #ffa347, #ff8a1f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', color: '#ffa347', fontWeight: '900', fontStyle: 'italic' }}>Service</span><span style={{ color: '#ffa347', fontWeight: '900' }}>?</span></h3>
+          <div style={{ marginTop: '6rem', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', marginBottom: '3rem' }}>
+            <div style={{ fontSize: '1.2375rem', fontWeight: '600', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.15em' }}>
+              Why Choose
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.5rem', position: 'relative' }}>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
+                <span style={{ fontSize: '2rem', fontWeight: '600', color: '#00a5a5', letterSpacing: '0.02em', lineHeight: '1' }}>Rees's</span>
+                <span style={{ fontSize: '1.325rem', fontWeight: '700', background: 'linear-gradient(135deg, #06b6d4 0%, #14b8a6 25%, #10b981 50%, #14b8a6 75%, #0891b2 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', textTransform: 'uppercase', letterSpacing: '0.1em', paddingBottom: '0.25rem' }}>Pool Care</span>
+              </div>
+              <div style={{ fontSize: '0.9625rem', color: '#9ca3af', fontWeight: '500', letterSpacing: '0.2em', marginTop: '-0.25rem' }}>LLC</div>
+            </div>
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginTop: 'auto' }}>
             <div style={{ borderTop: '1px solid #e5e5e5', paddingTop: '1.5rem', position: 'relative' }}>
               <svg style={{ position: 'absolute', top: '1.5rem', left: 0, width: '1.25rem', height: '1.25rem', color: '#14b8a6' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -47,7 +47,7 @@ const FAQ = () => {
   ]
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-gradient-to-br from-primary-50 to-white">
+    <section id="faq" className="py-16 md:py-24 pb-32 md:pb-40 bg-gradient-to-br from-primary-50 to-white relative">
       <div className="container-custom px-6">
         <div className="space-y-12">
           <h2 className="text-primary-600 text-center text-4xl font-bold">

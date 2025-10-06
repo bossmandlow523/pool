@@ -9,58 +9,59 @@ const ServiceShowcase = () => {
   })
 
   const [activeService, setActiveService] = useState(0)
+  const [hasClicked, setHasClicked] = useState(false)
 
-  // Auto-rotate carousel every 8 seconds
+  // Auto-rotate carousel every 13 seconds (20 seconds after click)
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveService((prev) => (prev + 1) % 3)
-    }, 8000)
+    }, hasClicked ? 20000 : 13000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [hasClicked])
 
   const services = [
     {
-      name: 'Weekly Maintenance',
-      tagline: 'The foundation of a perfect pool',
+      name: 'Monthly Maintenance',
+      tagline: 'Reliable service starting at $150',
       features: [
         'Complete water testing & chemical balancing',
         'Skim surface & remove debris',
         'Vacuum pool floor & walls',
         'Brush tiles & walls',
-        'Clean skimmer baskets & pump baskets',
-        'Inspect equipment & report issues',
+        'Clean filters & skimmer baskets',
+        'Add chemicals as needed',
       ],
-      image: '/weekly-maintenance-testing.png',
-      imageAlt: 'Professional pool technician testing water chemistry with color-coded test kit by crystal-clear pool',
+      image: '/Generated Image October 06, 2025 - 2_10PM.png',
+      imageAlt: 'Pool maintenance professional testing water chemistry and cleaning pool',
     },
     {
-      name: 'Premium Care',
-      tagline: 'Everything you need, nothing you don\'t',
+      name: 'Pool Deck Cleaning',
+      tagline: 'Complete exterior pool care',
       features: [
-        'All Weekly Maintenance services',
-        'Filter cleaning & backwashing',
-        'Tile line deep cleaning',
-        'Equipment performance optimization',
-        'Seasonal prep & winterization',
-        'Priority emergency service',
+        'Professional deck pressure washing',
+        'Remove dirt, algae, and stains',
+        'Clean pool surroundings',
+        'Enhance pool area appearance',
+        'Safe for all deck surfaces',
+        'Improve safety and aesthetics',
       ],
-      image: '/premium-care-filter.png',
-      imageAlt: 'Pool filter being professionally cleaned and pressure washed with crystal-clear pool in background',
+      image: '/Generated Image October 06, 2025 - 2_22PM.png',
+      imageAlt: 'Clean pool deck with sparkling surface after professional pressure washing',
     },
     {
-      name: 'Storm Recovery',
-      tagline: 'Get your pool back fast',
+      name: 'Green to Clean',
+      tagline: 'Pool recovery starting at $1,000',
       features: [
-        'Heavy debris removal',
-        'Water clarity restoration',
+        'Complete algae removal',
+        'Heavy debris clearing',
         'Chemical shock treatment',
-        'Equipment inspection & restart',
-        'Pressure wash surfaces',
-        'Full system check',
+        'Water clarity restoration',
+        'Filter deep cleaning',
+        'Transform green pool to crystal clear',
       ],
       image: '/storm-recovery-before-after.png',
-      imageAlt: 'Before and after pool transformation - from murky storm-damaged water to crystal-clear blue pool',
+      imageAlt: 'Before and after pool transformation - from green algae-filled water to crystal-clear blue pool',
     },
   ]
 
@@ -76,12 +77,12 @@ const ServiceShowcase = () => {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <div>
-              <span className="text-gray-800 font-light">From</span>{' '}
+              <span className="text-gray-800 uppercase" style={{ letterSpacing: '0.15em', fontWeight: '570' }}>From</span>{' '}
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-gray-400 via-gray-500 to-gray-400 bg-clip-text text-transparent font-black">Cloudy</span>
                 <span className="absolute inset-0 bg-gradient-to-r from-gray-400/80 via-gray-500/90 to-gray-400/80 blur-lg rounded-lg"></span>
               </span>{' '}
-              <span className="text-gray-800 font-light">to</span>{' '}
+              <span className="text-gray-800 uppercase" style={{ letterSpacing: '0.15em', fontWeight: '570' }}>to</span>{' '}
               <span className="bg-gradient-to-r from-primary-500 via-primary-400 to-teal-400 bg-clip-text text-transparent font-black">
                 Crystal-Clear
               </span>
@@ -106,7 +107,10 @@ const ServiceShowcase = () => {
                 initial={{ opacity: 0, x: -30 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                onClick={() => setActiveService(index)}
+                onClick={() => {
+                  setActiveService(index)
+                  setHasClicked(true)
+                }}
                 aria-pressed={activeService === index}
                 aria-label={`Select ${service.name}`}
                 className={`p-5 sm:p-6 rounded-2xl cursor-pointer transition-all duration-700 ease-out will-change-transform min-h-[88px] ${
@@ -189,11 +193,11 @@ const ServiceShowcase = () => {
                       className="w-full h-full object-cover"
                     />
                     {/* Logo Watermark - Bottom Right */}
-                    <div className="absolute bottom-2 right-2 w-16 h-16 bg-white/80 rounded-full shadow-lg flex items-center justify-center">
+                    <div className="absolute bottom-2 right-2 w-20 h-20 bg-white/80 rounded-full shadow-lg flex items-center justify-center">
                       <img
-                        src="/logo.png"
-                        alt="A Plus Pool Cleaning Inc Logo"
-                        className="w-14 h-14 object-contain"
+                        src="/rees_logo.png"
+                        alt="Rees's Pool Care LLC Logo"
+                        className="w-16 h-16 object-contain"
                       />
                     </div>
                   </>
@@ -215,7 +219,10 @@ const ServiceShowcase = () => {
               {services.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveService(index)}
+                  onClick={() => {
+                    setActiveService(index)
+                    setHasClicked(true)
+                  }}
                   aria-label={`View ${services[index].name}`}
                   className="p-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
                 >

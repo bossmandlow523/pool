@@ -50,8 +50,8 @@ const Hero = () => {
               className="absolute bottom-8 left-8 bg-white rounded-lg shadow-2xl p-4 animate-float"
             >
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">10+</div>
-                <div className="text-sm text-gray-600">Years of Service</div>
+                <div className="text-2xl font-bold text-primary-600">Family</div>
+                <div className="text-sm text-gray-600">Owned & Operated</div>
               </div>
             </motion.div>
           </motion.div>

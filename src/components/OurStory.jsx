@@ -29,7 +29,7 @@ const OurStory = () => {
             <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-primary-600">
               <img
                 src="/Generated Image October 01, 2025 - 3_27PM.png"
-                alt="Kim and Drew with happy customer beside sparkling pool"
+                alt="Rees's Pool Care LLC owner providing professional pool service"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -42,8 +42,8 @@ const OurStory = () => {
               className="absolute -bottom-6 -right-6 bg-secondary-400 rounded-2xl p-6 shadow-2xl"
             >
               <div className="text-center">
-                <div className="text-4xl font-bold">10+</div>
-                <div className="text-sm">Years Experience</div>
+                <div className="text-3xl font-bold">Family</div>
+                <div className="text-sm">Owned & Operated</div>
               </div>
             </motion.div>
           </motion.div>
@@ -60,7 +60,20 @@ const OurStory = () => {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="text-3xl sm:text-4xl font-bold mb-4"
             >
-              Our <span className="bg-gradient-to-r from-secondary-400 via-secondary-300 to-secondary-500 bg-clip-text text-transparent font-black">Story</span>
+              <span className="relative inline-block pr-4 pl-2">
+                <span className="bg-gradient-to-r from-secondary-300 via-secondary-200 to-secondary-400 bg-clip-text text-transparent italic font-black">
+                  Our Story{'\u00A0'}
+                </span>
+                <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 200 12" preserveAspectRatio="none">
+                  <path
+                    d="M0,7 Q50,2 100,7 T200,7"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="3"
+                    className="text-secondary-300/60"
+                  />
+                </svg>
+              </span>
             </motion.h2>
 
             <motion.div
@@ -70,18 +83,17 @@ const OurStory = () => {
               className="space-y-4 text-base text-white/90 leading-relaxed"
             >
               <p>
-                For over 10 years, we've been proud to serve our community as a family-owned pool service. As a small team—just myself and my nephew—we're personally invested in every pool we maintain and every customer we serve.
+                Rees's Pool Care LLC is a small, local family-owned pool company dedicated to serving our community in Williston, FL. We take pride in providing personalized, hands-on service that treats your pool like it's our own.
               </p>
               <p>
-                Quality is at the heart of everything we do. Unlike the "dump and dash" approach of larger companies, we provide comprehensive weekly cleaning and chemical services with meticulous attention to detail. Our commitment to excellence comes at fair, honest prices.
+                We offer comprehensive pool and spa cleaning, professional pool-deck cleaning, minor repairs, opening services, and expert green-to-clean transformations. Our monthly service plans start at just $150, and we provide free on-site estimates for all services.
               </p>
               <p>
-                We proudly service the entire area from South Venice to Lakewood Ranch. As a licensed and insured business, you can trust us with complete confidence. Whether you have questions or would like a free estimate, we're just a call, text, or email away.
+                From chemical testing and pH balancing to skimming, brushing, vacuuming, and filter maintenance, we handle every detail with care and professionalism. Serving Williston and surrounding areas, we're committed to keeping your pool crystal clear year-round.
               </p>
               <p className="text-base font-semibold text-white">
-                We'd be honored to become your trusted pool service partner. Let us show you what reliable, quality service looks like.
+                We'd be honored to become your trusted pool service partner. Call us today for your free on-site estimate!
               </p>
-              <p className="text-lg font-bold">- Kim and Drew</p>
             </motion.div>
 
             <motion.div
@@ -90,7 +102,7 @@ const OurStory = () => {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="mt-6"
             >
-              <a href="tel:+19415550123" className="btn-primary bg-secondary-400 hover:bg-secondary-500">
+              <a href="tel:+13525297596" className="btn-primary bg-secondary-400 hover:bg-secondary-500">
                 Call Us Today
               </a>
             </motion.div>

@@ -1,19 +1,63 @@
-import React from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const [isVisible, setIsVisible] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+  const footerRef = useRef(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!footerRef.current) return
+
+      const footerRect = footerRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+
+      // Calculate how much of the footer should be visible
+      // When footer top is at bottom of screen, start revealing it
+      const distanceFromBottom = windowHeight - footerRect.top
+      const footerHeight = footerRect.height
+
+      // Calculate progress (0 when footer is below viewport, 1 when fully visible)
+      const progress = Math.max(0, Math.min(1, distanceFromBottom / footerHeight))
+
+      setScrollProgress(progress)
+
+      // Trigger visibility animations when footer starts to appear
+      if (progress > 0.2) {
+        setIsVisible(true)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Initial call
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  // Calculate transform based on scroll progress - parallax effect
+  const translateY = (1 - scrollProgress) * 40
 
   return (
-    <footer className="bg-primary-600 text-white py-16">
-      <div className="container-custom">
+    <footer
+      ref={footerRef}
+      className="relative bg-primary-600 text-white py-16 overflow-hidden transition-transform duration-100 ease-out"
+      style={{
+        transform: `translateY(${translateY}px)`
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-700 via-primary-600 to-primary-800" />
+      <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-12">
           {/* Company Info */}
-          <div className="md:col-span-5">
+          <div className={`md:col-span-5 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="mb-6">
-              <img src="/logo.png" alt="A Plus Pool Cleaning" className="h-16 w-auto mb-4" />
+              <img src="/rees_logo.png" alt="Rees's Pool Care LLC" className="h-20 w-auto mb-4" />
             </div>
             <p className="text-white/90 mb-6 max-w-md leading-relaxed">
-              Family-owned pool service company providing professional, reliable pool maintenance throughout Southwest Florida for over 10 years.
+              Small, family-owned pool company serving our community in Williston, FL. Professional pool and spa cleaning, pool-deck cleaning, minor repairs, and green-to-clean services.
             </p>
             <div className="flex items-center space-x-2 mb-4">
               <div className="flex items-center text-sm text-white bg-primary-700 px-4 py-2 rounded-lg">
@@ -26,7 +70,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="md:col-span-3">
+          <div className={`md:col-span-3 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h3 className="font-bold text-lg mb-6 text-white">Quick Links</h3>
             <ul className="space-y-3">
               <li>
@@ -73,11 +117,11 @@ const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-4">
+          <div className={`md:col-span-4 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h3 className="font-bold text-lg mb-6 text-white">Get In Touch</h3>
             <ul className="space-y-4">
               <li>
-                <a href="tel:+19415550123" className="text-white/80 hover:text-white transition-colors flex items-start group">
+                <a href="tel:+13525297596" className="text-white/80 hover:text-white transition-colors flex items-start group">
                   <div className="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-secondary-400 transition-colors">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -85,12 +129,12 @@ const Footer = () => {
                   </div>
                   <div>
                     <div className="text-xs text-white/60 mb-1">Call Us</div>
-                    <div className="font-semibold text-white">(941) 555-POOL</div>
+                    <div className="font-semibold text-white">(352) 529-7596</div>
                   </div>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@apluspoolcleaning.com" className="text-white/80 hover:text-white transition-colors flex items-start group">
+                <a href="mailto:Reesspoolcarellc@gmail.com" className="text-white/80 hover:text-white transition-colors flex items-start group">
                   <div className="w-10 h-10 bg-primary-700 rounded-lg flex items-center justify-center mr-3 flex-shrink-0 group-hover:bg-secondary-400 transition-colors">
                     <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
@@ -99,7 +143,7 @@ const Footer = () => {
                   </div>
                   <div>
                     <div className="text-xs text-white/60 mb-1">Email Us</div>
-                    <div className="font-semibold text-white break-all">info@apluspoolcleaning.com</div>
+                    <div className="font-semibold text-white break-all">Reesspoolcarellc@gmail.com</div>
                   </div>
                 </a>
               </li>
@@ -111,7 +155,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <div className="text-xs text-white/60 mb-1">Service Area</div>
-                  <div className="font-semibold text-white">South Venice to Lakewood Ranch, FL</div>
+                  <div className="font-semibold text-white">Williston, FL & Surrounding Areas</div>
                 </div>
               </li>
             </ul>
@@ -119,8 +163,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-primary-500 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/70">
-          <p>© {currentYear} A Plus Pool Cleaning Inc. All rights reserved.</p>
+        <div className={`border-t border-primary-500 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-white/70 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <p>© {currentYear} Rees's Pool Care LLC. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy

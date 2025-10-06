@@ -20,7 +20,7 @@ const Contact = () => {
     e.preventDefault()
     // Form submission logic would go here
     console.log('Form submitted:', formData)
-    alert('Thank you! We will contact you shortly to schedule your free estimate.')
+    alert('Thank you! We will contact you shortly to schedule your free on-site estimate.')
   }
 
   const handleChange = (e) => {
@@ -75,7 +75,9 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="bg-white rounded-3xl p-8 shadow-2xl"
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6">Get Your Free Quote Today</h3>
+            <div className="flex justify-center mb-8">
+              <img src="/rees_logo.png" alt="Rees's Pool Care LLC" className="h-24 w-auto" />
+            </div>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -105,7 +107,7 @@ const Contact = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
-                  placeholder="(941) 555-0123"
+                  placeholder="(352) 555-0123"
                 />
               </div>
 
@@ -136,7 +138,7 @@ const Contact = () => {
                   value={formData.address}
                   onChange={handleChange}
                   className="w-full px-4 py-3 min-h-[48px] rounded-lg border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 transition-colors text-gray-900"
-                  placeholder="123 Pool Lane, Sarasota, FL"
+                  placeholder="123 Pool Lane, Williston, FL"
                 />
               </div>
 
@@ -186,8 +188,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="text-sm text-white/70 mb-1">Call or Text</div>
-                    <a href="tel:+19415550123" className="text-xl font-semibold hover:text-white/80 transition-colors">
-                      (941) 555-POOL
+                    <a href="tel:+13525297596" className="text-xl font-semibold hover:text-white/80 transition-colors">
+                      (352) 529-7596
                     </a>
                   </div>
                 </div>
@@ -203,8 +205,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="text-sm text-white/70 mb-1">Email Us</div>
-                    <a href="mailto:info@apluspoolcleaning.com" className="text-xl font-semibold hover:text-white/80 transition-colors break-all">
-                      info@apluspoolcleaning.com
+                    <a href="mailto:Reesspoolcarellc@gmail.com" className="text-xl font-semibold hover:text-white/80 transition-colors break-all">
+                      Reesspoolcarellc@gmail.com
                     </a>
                   </div>
                 </div>
@@ -220,7 +222,7 @@ const Contact = () => {
                   <div>
                     <div className="text-sm text-white/70 mb-1">Service Area</div>
                     <div className="text-xl font-semibold">
-                      South Venice to Lakewood Ranch
+                      Williston, FL & Surrounding Areas
                     </div>
                   </div>
                 </div>

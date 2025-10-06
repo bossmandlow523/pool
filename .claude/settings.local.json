@@ -4,7 +4,14 @@
       "Bash(copy:*)",
       "Read(//c/Users/nicks/OneDrive/Pictures/Screenshots/**)",
       "Bash(npx shadcn@latest add \"https://21st.dev/r/meschacirung/faqs-component\")",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(mkdir:*)",
+      "Bash(curl:*)",
+      "Bash(curl -s https://raw.githubusercontent.com/bossmandlow523/gallo/main/claude/devops-deployment-engineer -o claude/devops-deployment-engineer)",
+      "Bash(curl -s https://raw.githubusercontent.com/bossmandlow523/gallo/main/claude/settings.local.json -o claude/settings.local.json)",
+      "Bash(curl -s \"https://raw.githubusercontent.com/bossmandlow523/gallo/main/claude/style guide\" -o \"claude/style guide\")",
+      "Bash(curl -s https://raw.githubusercontent.com/bossmandlow523/gallo/main/claude/ux-ui -o claude/ux-ui)"
     ],
     "deny": [],
     "ask": []
