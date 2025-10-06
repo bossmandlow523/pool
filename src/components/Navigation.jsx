@@ -29,8 +29,8 @@ const Navigation = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
-        <a href="#top" className="flex items-center">
-          <img src="/rees_logo.png" alt="Rees's Pool Care LLC" className="h-14 w-14" />
+        <a href="#top" className="flex items-center -ml-4">
+          <img src="/rees_logo.png" alt="Rees's Pool Care LLC" className="h-18 w-18" />
         </a>
 
         {/* Desktop Navigation */}

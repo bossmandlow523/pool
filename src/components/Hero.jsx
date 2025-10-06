@@ -13,6 +13,7 @@ const Hero = () => {
 
   return (
     <section id="top" className="relative min-h-screen flex items-center overflow-hidden">
+
       {/* Mobile: Image background with overlay */}
       <div className="lg:hidden absolute inset-0">
         <img
@@ -42,12 +43,26 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-primary-900/20 to-transparent"></div>
             </div>
 
+            {/* Logo in bottom left corner of image block */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={inView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="absolute bottom-8 left-8"
+            >
+              <img 
+                src="/rees_logo.png" 
+                alt="Rees's Pool Care LLC" 
+                className="h-24 w-24 drop-shadow-lg" 
+              />
+            </motion.div>
+
             {/* Floating badge */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 1, duration: 0.5 }}
-              className="absolute bottom-8 left-8 bg-white rounded-lg shadow-2xl p-4 animate-float"
+              className="absolute bottom-8 right-8 bg-white rounded-lg shadow-2xl p-4 animate-float"
             >
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary-600">Family</div>
